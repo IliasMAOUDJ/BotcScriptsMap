@@ -20,29 +20,6 @@ function toggleDark() {
   applyDarkMode();
 }
 
-// ===== PROFILE DROPDOWN =====
-function toggleProfileDropdown() {
-  const dd = document.getElementById('profileDropdown');
-  dd.classList.toggle('hidden');
-  dd.classList.toggle('dropdown-enter');
-  // close on outside click
-  if (!dd.classList.contains('hidden')) {
-    setTimeout(() => {
-      document.addEventListener('click', closeDropdownOutside);
-    }, 10);
-  } else {
-    document.removeEventListener('click', closeDropdownOutside);
-  }
-}
-
-function closeDropdownOutside(e) {
-  const wrapper = document.getElementById('profileDropdownWrapper');
-  if (!wrapper.contains(e.target)) {
-    document.getElementById('profileDropdown').classList.add('hidden');
-    document.removeEventListener('click', closeDropdownOutside);
-  }
-}
-
 // ===== SEARCH =====
 function openSearch() {
   document.getElementById('searchOverlay').classList.remove('hidden');
@@ -90,10 +67,6 @@ function renderPage(page) {
   switch (page) {
     case 'dashboard': html = getDashboardHTML(); break;
     case 'analytics': html = getAnalyticsHTML(); break;
-    case 'users': html = getUsersHTML(); break;
-    case 'orders': html = getOrdersHTML(); break;
-    case 'messages': html = getMessagesHTML(); break;
-    case 'settings': html = getSettingsHTML(); break;
     default: html = getDashboardHTML();
   }
   container.innerHTML = html;
