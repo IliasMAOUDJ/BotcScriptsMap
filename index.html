@@ -9,6 +9,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Chart.js 3 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <!-- GoJS -->
+  <script src="https://cdn.jsdelivr.net/npm/gojs@2.3.13/release/go.js"></script>
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
@@ -24,20 +26,27 @@
       class="w-64 bg-white dark:bg-[#1f2937] border-r border-gray-200 dark:border-gray-700 flex-shrink-0 hidden md:flex md:flex-col transition-colors duration-200">
       <div class="p-5 border-b border-gray-100 dark:border-gray-700 flex items-center space-x-2">
         <span class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Board</span>
-        <span
-          class="text-xs font-medium text-gray-400 bg-gray-100 dark:bg-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-full">v2</span>
       </div>
       <nav class="flex-1 p-4 space-y-1 text-sm">
-        <!-- Dashboard (active) -->
-        <a href="#" onclick="switchPage('dashboard')"
-          class="flex items-center space-x-3 px-3 py-2.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-medium">
+        <a href="#" onclick="switchPage('homepage')"
+          class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
           <i class="fas fa-th-large w-5 text-indigo-500 dark:text-indigo-400"></i>
+          <span>Homepage</span>
+        </a>
+        <a href="#" onclick="switchPage('dashboard')"
+          class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+          <i class="fas fa-chart-pie w-5 text-gray-400 dark:text-gray-500"></i>
           <span>Dashboard</span>
         </a>
         <a href="#" onclick="switchPage('analytics')"
           class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
           <i class="fas fa-chart-pie w-5 text-gray-400 dark:text-gray-500"></i>
           <span>Analytics</span>
+        </a>
+        <a href="#" onclick="switchPage('scriptsWeb')"
+          class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+          <i class="fas fa-chart-pie w-5 text-gray-400 dark:text-gray-500"></i>
+          <span>Scripts Web</span>
         </a>
       </nav>
       <div
@@ -134,21 +143,21 @@
           <a href="#" onclick="switchPage('dashboard'); closeSearch();"
             class="p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center space-x-2"><i
               class="fas fa-th-large w-5 text-indigo-400"></i><span>Dashboard</span></a>
+          <a href="#" onclick="switchPage('homepage'); closeSearch();"
+            class="p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center space-x-2"><i
+              class="fas fa-chart-pie w-5 text-indigo-400"></i><span>Homepage</span></a>
           <a href="#" onclick="switchPage('analytics'); closeSearch();"
             class="p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center space-x-2"><i
-              class="fas fa-chart-pie w-5 text-indigo-400"></i><span>Analytics</span></a>
-          <a href="#" onclick="switchPage('users'); closeSearch();"
-            class="p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center space-x-2"><i
-              class="fas fa-users w-5 text-indigo-400"></i><span>Users</span></a>
-          <a href="#" onclick="switchPage('orders'); closeSearch();"
-            class="p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center space-x-2"><i
-              class="fas fa-shopping-cart w-5 text-indigo-400"></i><span>Orders</span></a>
+              class="fas fa-users w-5 text-indigo-400"></i><span>Analytics</span></a>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="modules/homepage.js"></script>
+  <script src="modules/dashboard.js"></script>
+  <script src="modules/scriptWeb.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>
