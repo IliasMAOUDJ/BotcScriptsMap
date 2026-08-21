@@ -12,7 +12,7 @@ import requests
 
 API_BASE = "https://botcscripts.com/api"
 
-OUTPUT_DIR = Path("C:/Users/BEaCHILD1/OneDrive/PostDoc/Perso/botc_scripts")
+OUTPUT_DIR = Path("botc_scripts")
 
 # Nombre de pages récupérées en parallèle
 PAGE_BATCH_SIZE = 2
@@ -384,7 +384,7 @@ def download_all_scripts():
     # --------------------------------------------------------
     # Pages restantes
     # --------------------------------------------------------
-    pages_to_fetch = min(num_pages+1,4)
+    pages_to_fetch = min(num_pages+1,20)
     for page in range(2, pages_to_fetch):
 
         print(
