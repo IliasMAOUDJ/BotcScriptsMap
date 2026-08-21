@@ -1,0 +1,165 @@
+/* custom transitions & dark mode overrides */
+body {
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.card-hover {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.chart-container {
+  position: relative;
+  height: 200px;
+  width: 100%;
+}
+
+/* dark mode helper (applied via JS) */
+.dark body {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+.dark .bg-white {
+  background: #1f2937;
+}
+
+.dark .bg-gray-50 {
+  background: #374151;
+}
+
+.dark .border-gray-100 {
+  border-color: #374151;
+}
+
+.dark .text-gray-700 {
+  color: #d1d5db;
+}
+
+.dark .text-gray-400 {
+  color: #9ca3af;
+}
+
+.dark .text-gray-800 {
+  color: #f3f4f6;
+}
+
+.dark .text-gray-500 {
+  color: #9ca3af;
+}
+
+.dark .bg-indigo-50 {
+  background: #312e81;
+}
+
+.dark .bg-indigo-100 {
+  background: #4338ca;
+}
+
+.dark .text-indigo-600 {
+  color: #818cf8;
+}
+
+.dark .text-indigo-700 {
+  color: #a5b4fc;
+}
+
+.dark .bg-green-50 {
+  background: #065f46;
+}
+
+.dark .text-green-600 {
+  color: #34d399;
+}
+
+.dark .bg-amber-50 {
+  background: #78350f;
+}
+
+.dark .text-amber-600 {
+  color: #fbbf24;
+}
+
+.dark .bg-rose-50 {
+  background: #881337;
+}
+
+.dark .text-rose-600 {
+  color: #fb7185;
+}
+
+.dark .bg-emerald-50 {
+  background: #065f46;
+}
+
+.dark .text-emerald-600 {
+  color: #34d399;
+}
+
+.dark .bg-gray-100 {
+  background: #374151;
+}
+
+.dark .bg-gray-200 {
+  background: #4b5563;
+}
+
+.dark .border-gray-200 {
+  border-color: #374151;
+}
+
+.dark .border-gray-100\/80 {
+  border-color: rgba(55, 65, 81, 0.8);
+}
+
+.dark .hover\:bg-gray-50:hover {
+  background: #374151;
+}
+
+.dark .bg-white\/70 {
+  background: rgba(31, 41, 55, 0.8);
+}
+
+.dark .backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+.dark .text-green-700 {
+  color: #6ee7b7;
+}
+
+.dark .bg-green-100 {
+  background: #065f46;
+}
+
+.dark .text-yellow-700 {
+  color: #fcd34d;
+}
+
+.dark .bg-yellow-100 {
+  background: #78350f;
+}
+
+.dark .text-blue-700 {
+  color: #93c5fd;
+}
+
+.dark .bg-blue-100 {
+  background: #1e3a8a;
+}
+
+/* dropdown animation */
+.dropdown-enter {
+  opacity: 0;
+  transform: scale(0.95) translateY(-5px);
+}
+
+.dropdown-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition: all 0.1s ease;
+}
