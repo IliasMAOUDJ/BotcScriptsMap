@@ -66,7 +66,6 @@ function renderPage(page) {
   let html = '';
   switch (page) {
     case 'dashboard': html = getDashboardHTML(); break;
-    case 'analytics': html = getAnalyticsHTML(); break;
     default: html = getDashboardHTML();
   }
   container.innerHTML = html;
@@ -82,13 +81,14 @@ function getDashboardHTML() {
     <!-- stats -->
     <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
       <div class="bg-white dark:bg-[#1f2937] rounded-2xl shadow-sm border border-gray-100/80 dark:border-gray-700 p-5 card-hover">
-        <div class="flex items-center justify-between"><div><p class="text-sm text-gray-400 dark:text-gray-500 font-medium">Total Tokens</p><h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">$48,295</h3><span class="inline-flex items-center text-xs text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 px-2 py-0.5 rounded-full mt-1"><i class="fas fa-arrow-up mr-1"></i> 12.5%</span></div><div class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400"><i class="fas fa-dollar-sign text-2xl"></i></div></div>
+        <div class="flex items-center justify-between"><div><p class="text-sm text-gray-400 dark:text-gray-500 font-medium">Total Tokens</p><h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">{48,295}</h3><span class="inline-flex items-center text-xs text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 px-2 py-0.5 rounded-full mt-1"><i class="fas fa-arrow-up mr-1"></i> 12.5%</span></div><div class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400"><i class="fas fa-dollar-sign text-2xl"></i></div></div>
       </div>
       <div class="bg-white dark:bg-[#1f2937] rounded-2xl shadow-sm border border-gray-100/80 dark:border-gray-700 p-5 card-hover">
         <div class="flex items-center justify-between"><div><p class="text-sm text-gray-400 dark:text-gray-500 font-medium">New Users</p><h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">1,283</h3><span class="inline-flex items-center text-xs text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 px-2 py-0.5 rounded-full mt-1"><i class="fas fa-arrow-up mr-1"></i> 8.1%</span></div><div class="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400"><i class="fas fa-user-plus text-2xl"></i></div></div>
       </div>
-      <div class="bg-white dark:bg-[#1f2937] rounded-2xl shadow-sm border border-gray-100/80 dark:border-gray-700 p-5 card-hover">
-        <div class="flex items-center justify-between"><div><p class="text-sm text-gray-400 dark:text-gray-500 font-medium">Orders</p><h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">4,392</h3><span class="inline-flex items-center text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30 px-2 py-0.5 rounded-full mt-1"><i class="fas fa-minus mr-1"></i> 0.3%</span></div><div class="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400"><i class="fas fa-shopping-bag text-2xl"></i></div></div>
+      <div>
+            <p class="text-sm text-gray-400 dark:text-gray-500 font-medium">Total Scripts</p>
+            <h3 id="statTotalScripts" class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">–</h3>
       </div>
       <div class="bg-white dark:bg-[#1f2937] rounded-2xl shadow-sm border border-gray-100/80 dark:border-gray-700 p-5 card-hover">
         <div class="flex items-center justify-between"><div><p class="text-sm text-gray-400 dark:text-gray-500 font-medium">Conversion</p><h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">3.24%</h3><span class="inline-flex items-center text-xs text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 px-2 py-0.5 rounded-full mt-1"><i class="fas fa-arrow-up mr-1"></i> 1.2%</span></div><div class="w-12 h-12 rounded-2xl bg-rose-50 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400"><i class="fas fa-percent text-2xl"></i></div></div>
@@ -97,7 +97,7 @@ function getDashboardHTML() {
     <!-- charts -->
     <section class="grid grid-cols-1 xl:grid-cols-3 gap-6">
       <div class="bg-white dark:bg-[#1f2937] p-5 rounded-2xl shadow-sm border border-gray-100/80 dark:border-gray-700 col-span-1 xl:col-span-2 card-hover">
-        <div class="flex items-center justify-between mb-3"><h4 class="font-semibold text-gray-700 dark:text-gray-200">Weekly Revenue</h4><span class="text-xs text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-gray-800 px-2 py-1 rounded-full">+18% vs last week</span></div>
+        <div class="flex items-center justify-between mb-3"><h4 class="font-semibold text-gray-700 dark:text-gray-200">Top 5 characters</h4></div>
         <div class="chart-container"><canvas id="barChartDash" style="width:100%;height:100%;"></canvas></div>
       </div>
       <div class="bg-white dark:bg-[#1f2937] p-5 rounded-2xl shadow-sm border border-gray-100/80 dark:border-gray-700 card-hover">
@@ -121,30 +121,46 @@ function getDashboardHTML() {
 
 // ===== CHART INIT PER PAGE =====
 let scriptsData = null;
+let totalScripts = 0;
 
 async function loadScriptsData() {
   if (scriptsData) return scriptsData;
 
-  const response = await fetch("botc_scripts/all_scripts.json");
-  const jsonData = await response.json();
-  const scripts = jsonData.map(item => item.characters);
+  try {
+    const response = await fetch("botc_scripts/all_scripts.json");
+    if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+    const jsonData = await response.json();
 
-  const counts = {}; // on construit dans une variable locale
-  for (let index = 0; index < scripts.length; index++) {
-    const list_of_char = scripts[index];
-    for (let char_index = 0; char_index < list_of_char.length; char_index++) {
-      const character = list_of_char[char_index];
-      if (character in counts) {
-        counts[character] += 1;
-      } else {
-        counts[character] = 1; // <- voir bug n°2 ci-dessous
+    totalScripts = jsonData.length; // <- nombre total de scripts extraits
+
+    const scripts = jsonData.map(item => item.characters);
+    const counts = {};
+    for (let index = 0; index < scripts.length; index++) {
+      const list_of_char = scripts[index];
+      for (let char_index = 0; char_index < list_of_char.length; char_index++) {
+        const character = list_of_char[char_index];
+        counts[character] = (counts[character] || 0) + 1;
       }
     }
-  }
 
-  scriptsData = counts;
-  return scriptsData;
+    scriptsData = counts;
+    return scriptsData;
+  } catch (err) {
+    console.error("Erreur lors du chargement de scriptsData:", err);
+    scriptsData = {};
+    return scriptsData;
+  }
 }
+
+function updateDashboardStats() {
+  const el = document.getElementById('statTotalScripts');
+  if (el) {
+    el.textContent = totalScripts.toLocaleString('fr-FR'); // formate avec séparateur de milliers
+  }
+  // idem pour les autres stats dynamiques
+}
+
+
 
 function getTop(array, nb_values){
   const newMap = Object.entries(array);
@@ -182,7 +198,14 @@ function getTeam(character) {
 
 // Au chargement de la page
 window.addEventListener('DOMContentLoaded', async () => {
+  // 1. injecter le HTML du dashboard dans le DOM (à adapter selon ton code existant)
+  //document.getElementById('mainContent').innerHTML = getDashboardHTML();
+
+  // 2. charger les données
   await Promise.all([loadScriptsData(), loadRolesData()]);
+
+  // 3. mettre à jour les stats et les graphiques
+  updateDashboardStats();
   initChartsForPage('dashboard');
 });
 
